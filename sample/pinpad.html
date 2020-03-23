@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link href="../src/pinpad.css" rel="stylesheet"/>
+<script type="text/javascript" src="../src/pinpad.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+<input type="text" id="pin1" placeholder="기본옵션" />
+<input type="text" id="pin2" placeholder="커스텀버튼" />
+<input type="text" id="pin3" placeholder="입력값 설정" />
+<input type="text" id="pin4" placeholder="그외 설정" />
+<input type="button" id="pin5" value="필드참조 없을때" />
+<input type="text" id="pin6" placeholder="4*3배열" />
+<input type="text" id="pin7" placeholder="5*4배열" />
+
+<script>
+new pinpad({
+	ref : {
+		el : '#pin1'
+	}
+});
+
+new pinpad({
+	ref : {
+		el : '#pin2'
+	},
+	height : 45,
+	keypads : [ 4, 3, 6, 0, 8, 9, 'done', '.', 'del'],
+	letterReplace : {
+		'del' : '<i class="fa fa-long-arrow-left" data-toggle="tooltip" title="fa fa-long-arrow-left"></i>',
+		'done' : '<i class="fa fa-check" data-toggle="tooltip" title="fa fa-check"></i>',
+		4 : '<i class="fa fa-foursquare" data-toggle="tooltip" title="" data-original-title="fa fa-foursquare"></i>'
+	},
+});
+
+new pinpad({
+	ref : {
+		el : '#pin3',
+		useFormat : true
+	},
+	format : '**/**'
+});
+
+new pinpad({
+	ref : {
+		el : '#pin4'
+	},
+	skin : 'gray',
+	passcode : true,
+	immediate : true,
+	maxLength : 4,
+	desc : '숫자4자리를 입력하세요',
+	letterReplace : {
+		'del' : '<',
+		'done' : 'V'
+	}
+});
+
+var pin5 = new pinpad({
+	oncomplete : function(value) {
+		alert(value);
+	},
+	passcode : true
+});
+
+$('#pin5').on('click', function() {
+	pin5.show();
+});
+
+new pinpad({
+	ref : {
+		el : '#pin6'
+	},
+	skin : 'blue',
+	mode : 'x4'
+});
+
+new pinpad({
+	ref : {
+		el : '#pin7'
+	},
+	skin : 'gray',
+	mode : 'x5',
+	setRandomSpaceCount : 8
+});
+
+</script>
+</body>
+</html>
