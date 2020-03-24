@@ -38,7 +38,8 @@ new pinpad({
 	keypads : [ 4, 3, 6, 0, 8, 9, 'done', '.', 'del'],
 	letterReplace : {
 		'del' : '<i class="fa fa-long-arrow-left" data-toggle="tooltip" title="fa fa-long-arrow-left"></i>',
-		'done' : '<i class="fa fa-check" data-toggle="tooltip" title="fa fa-check"></i>'
+		'done' : '<i class="fa fa-check" data-toggle="tooltip" title="fa fa-check"></i>',
+		4 : '<i class="fa fa-foursquare" data-toggle="tooltip" title="" data-original-title="fa fa-foursquare"></i>'
 	},
 });
 ```
